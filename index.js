@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 
 import AuthRoutes from "./routes/authRoutes.js";
+import PostRoutes from "./routes/postRoutes.js";
+import CommentRoutes from "./routes/commentRoutes.js";
 
 const app = express();
 app.use(cors());
@@ -33,3 +35,5 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", AuthRoutes);
+app.use("/api", PostRoutes);
+app.use("/api", CommentRoutes);
