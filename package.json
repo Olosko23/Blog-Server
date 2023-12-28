@@ -9,7 +9,12 @@
     "dev": "nodemon index.js",
     "start": "node index.js"
   },
-  "keywords": ["Blog", "CMS", "CRUD", "Automation"],
+  "keywords": [
+    "Blog",
+    "CMS",
+    "CRUD",
+    "Automation"
+  ],
   "author": "Olosko23",
   "license": "ISC",
   "dependencies": {
@@ -23,5 +28,9 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
     "nodemon": "^3.0.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
   }
 }
