@@ -2,6 +2,29 @@ import mongoose from "mongoose";
 
 const { Schema, model } = mongoose;
 
+const validTags = [
+  "science",
+  "technology",
+  "politics",
+  "health",
+  "travel",
+  "food",
+  "sports",
+  "entertainment",
+  "education",
+  "business",
+  "environment",
+  "culture",
+  "fashion",
+  "lifestyle",
+  "programming",
+  "music",
+  "books",
+  "fitness",
+  "photography",
+  "art",
+];
+
 const postSchema = new Schema(
   {
     title: {
@@ -12,21 +35,31 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
+    coverImage: {
+      title: String,
+      imageUrl: String,
+    },
     images: [
       {
-        type: String,
+        title: String,
+        imageUrl: String,
       },
     ],
     videos: [
       {
-        type: String,
+        title: String,
+        videoUrl: String,
       },
     ],
-    tags: [
-      {
-        type: String,
+    tags: {
+      type: [String],
+      validate: {
+        validator: function (tags) {
+          return tags.every((tag) => validTags.includes(tag));
+        },
+        message: (props) => `${props.value} is not a valid tag.`,
       },
-    ],
+    },
     author: {
       type: Schema.Types.ObjectId,
       ref: "User",
