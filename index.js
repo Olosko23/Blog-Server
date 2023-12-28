@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
+import AuthRoutes from "./routes/authRoutes.js";
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -29,3 +31,5 @@ app.get("/", (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+app.use("/api", AuthRoutes);
