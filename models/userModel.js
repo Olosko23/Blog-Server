@@ -18,6 +18,12 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  resetToken: {
+    type: String,
+  },
+  resetTokenExpiration: {
+    type: Date,
+  },
   isVerified: {
     type: Boolean,
     default: false,

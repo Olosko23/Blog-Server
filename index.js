@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import AuthRoutes from "./routes/authRoutes.js";
 import PostRoutes from "./routes/postRoutes.js";
 import CommentRoutes from "./routes/commentRoutes.js";
+import PasswordRoutes from "./routes/userRoutes.js";
 
 const app = express();
 app.use(cors());
@@ -39,5 +40,6 @@ app.get("/", (req, res) => {
 app.use("/api", AuthRoutes);
 app.use("/api", PostRoutes);
 app.use("/api", CommentRoutes);
+app.use("/api", PasswordRoutes);
 
 export default app;
