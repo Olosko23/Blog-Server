@@ -1,7 +1,5 @@
 import supertest from "supertest";
-import jwt from "jsonwebtoken";
 import app from "../index.js";
-import { createToken } from "../middlewares/middleware.js";
 import User from "../models/userModel.js";
 
 const request = supertest(app);
