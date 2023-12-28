@@ -1,11 +1,10 @@
 import asyncHandler from "express-async-handler";
-import { createToken } from "../middlewares/middleware.js";
 import bcrypt from "bcrypt";
 import User from "../models/userModel.js";
+import { createToken } from "../middlewares/middleware.js";
 
 // Function to validate password complexity
 const isStrongPassword = (password) => {
-  // Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
 
@@ -18,28 +17,29 @@ const maxAge = 24 * 60 * 60; // 1 day in seconds
 const signup = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
 
+  if (!username || !email || !password) {
+    return res.status(400).json("Fill in all the details to create an account");
+  }
+
   try {
-    // Check if username or email already exists
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
 
     if (existingUser) {
-      // Return an error if username or email is already in use
-      const errors = {};
       if (existingUser.username === username) {
-        errors.username = "Username is already taken.";
+        return res.status(400).json({ error: "Username is already taken." });
       }
       if (existingUser.email === email) {
-        errors.email = "Email is already registered.";
+        return res.status(400).json({ error: "Email is already registered" });
       }
-      throw errors;
     }
 
     if (!isStrongPassword(password)) {
-      const errors = {
-        password:
-          "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%*?&)",
-      };
-      throw errors;
+      return res
+        .status(400)
+        .json({
+          error:
+            "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%*?&)",
+        });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -54,8 +54,7 @@ const signup = asyncHandler(async (req, res) => {
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json(user);
   } catch (error) {
-    console.log(error);
-    res.status(400).json({ errors: error });
+    res.status(500).json({ message: error.message });
   }
 });
 
