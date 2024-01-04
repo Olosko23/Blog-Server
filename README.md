@@ -444,13 +444,19 @@ If you'd like to contribute to this project, please follow the [Contributing Gui
 
 ## ENV
 MONGO_URI=mongodb+srv://olosko23:<passwordd>@blogcluster.xjrttip.mongodb.net/?retryWrites=true&w=majority
+<br />
 PORT=8080
+<br />
 JWT_SECRET=BlogMERN23
+<br />
 ELASTIC_EMAIL_API_KEY=821A84EFBA73DF400BDEC60247FE47B02F1EDB27018E49C8CA53325B693921614D2D557C3B232652B5CB55652F46560A
+<br />
 CLOUD_NAME=dhw8uj9ct
+<br />
 API_KEY=951637631872152
+<br />
 API_SECRET=bN7WULjwv0udfl9HeAO9K4mAyNw
-
+<br />
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
