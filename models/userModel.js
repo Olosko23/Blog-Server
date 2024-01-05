@@ -24,6 +24,24 @@ const userSchema = new Schema({
   resetTokenExpiration: {
     type: Date,
   },
+  twitterUrl:{
+    type: String
+    },
+  instagramUrl:{
+    type: String
+    },
+  facebookUrl:{
+    type: String
+    },
+  youtubeUrl:{
+    type: String
+    },
+  whatsappUrl:{
+    type: String
+    },
+  linkedinUrl:{
+    type: String
+    },
   isVerified: {
     type: Boolean,
     default: false,
