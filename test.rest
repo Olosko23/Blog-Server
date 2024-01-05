@@ -16,8 +16,8 @@ POST http://localhost:8080/api/auth/signup
 Content-Type: application/json
 
 {
-    "username": "oloo3",
-    "email": "oloo3@oloo.com",
+    "username": "oloo",
+    "email": "oloo@oloo.com",
     "password": "Olosko2018?"
 }
 
