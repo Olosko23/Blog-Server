@@ -10,7 +10,12 @@ import CommentRoutes from "./routes/commentRoutes.js";
 import PasswordRoutes from "./routes/userRoutes.js";
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: "https://phreddy.netlify.app",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 dotenv.config();
