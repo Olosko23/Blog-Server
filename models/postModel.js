@@ -39,6 +39,9 @@ const postSchema = new Schema(
       title: String,
       imageUrl: String,
     },
+    overview: {
+      type: String,
+    },
     images: [
       {
         title: String,
