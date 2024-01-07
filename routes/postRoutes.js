@@ -16,9 +16,9 @@ import { protect } from "../middlewares/middleware.js";
 const router = express.Router();
 
 // Private Routes
-router.post("/posts", protect, createPost);
-router.put("/posts/:postId", protect, editPost);
-router.delete("/posts/:postId", protect, deletePost);
+router.post("/posts", createPost);
+router.put("/posts/:postId", editPost);
+router.delete("/posts/:postId", deletePost);
 
 router.put("/posts/:postId/like", protect, likePost);
 router.put("/posts/:postId/unlike", protect, unlikePost);

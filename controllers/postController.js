@@ -12,7 +12,7 @@ cloudinary.v2.config({
 // @route   POST /api/posts
 // @access  Private
 const createPost = asyncHandler(async (req, res) => {
-  const { title, content, tags } = req.body;
+  const { title, content, tags, overview } = req.body;
   const author = req.user;
 
   try {
@@ -63,6 +63,7 @@ const createPost = asyncHandler(async (req, res) => {
       videos: uploadedVideos,
       tags,
       author,
+      overview,
     });
 
     const savedPost = await newPost.save();
