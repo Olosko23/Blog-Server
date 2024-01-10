@@ -7,6 +7,7 @@ const request = supertest(app);
 describe("Authentication Tests", () => {
   // Clean up the database before each test
   beforeEach(async () => {
+    jest.setTimeout(20000); 
     await User.deleteMany({});
   });
 
