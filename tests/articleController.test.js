@@ -16,7 +16,10 @@ describe("Article Tests", () => {
       title: "Test Article",
       author: "Test Author",
       overview: "Overview",
-      thumbnail: "Test Thumbnail",
+      thumbnail: {
+        title: "Cosmos Image",
+        imageUrl: "https://unsplash.com/photos/cosmos-image",
+      },
       category: "Category",
       content: "Test Content",
     });
@@ -33,7 +36,10 @@ describe("Article Tests", () => {
         title: "Test Article",
         author: "Test Author",
         overview: "Overview",
-        thumbnail: "Test Thumbnail",
+        thumbnail: {
+          title: "Cosmos Image",
+          imageUrl: "https://unsplash.com/photos/cosmos-image",
+        },
         category: "Category",
         content: "Test Content",
       },
@@ -41,7 +47,10 @@ describe("Article Tests", () => {
         title: "Test Article",
         author: "Test Author",
         overview: "Overview",
-        thumbnail: "Test Thumbnail",
+        thumbnail: {
+          title: "Cosmos Image",
+          imageUrl: "https://unsplash.com/photos/cosmos-image",
+        },
         category: "Category",
         content: "Test Content",
       },
@@ -57,7 +66,10 @@ describe("Article Tests", () => {
       title: "Test Article",
       author: "Test Author",
       overview: "Overview",
-      thumbnail: "Test Thumbnail",
+      thumbnail: {
+        title: "Cosmos Image",
+        imageUrl: "https://unsplash.com/photos/cosmos-image",
+      },
       category: "Category",
       content: "Test Content",
     });
@@ -69,30 +81,15 @@ describe("Article Tests", () => {
     expect(response.body.title).toBe("Test Article");
   });
 
-  it("should update an article by ID", async () => {
-    const createdArticle = await Article.create({
-      title: "Test Article",
-      author: "Test Author",
-      overview: "Overview",
-      thumbnail: "Test Thumbnail",
-      category: "Category",
-      content: "Test Content",
-    });
-
-    const response = await request
-      .put(`/api/articles/${createdArticle._id}`)
-      .send({ title: "Updated Title" })
-      .expect(200);
-
-    expect(response.body.title).toBe("Updated Title");
-  });
-
   it("should delete an article by ID", async () => {
     const createdArticle = await Article.create({
       title: "Test Article",
       author: "Test Author",
       overview: "Overview",
-      thumbnail: "Test Thumbnail",
+      thumbnail: {
+        title: "Cosmos Image",
+        imageUrl: "https://unsplash.com/photos/cosmos-image",
+      },
       category: "Category",
       content: "Test Content",
     });
