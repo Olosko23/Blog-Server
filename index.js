@@ -9,6 +9,7 @@ import PostRoutes from "./routes/postRoutes.js";
 import PostRoutes2 from "./routes/postRoutes2.js";
 import CommentRoutes from "./routes/commentRoutes.js";
 import PasswordRoutes from "./routes/userRoutes.js";
+import ArticleRoutes from "./routes/articleRoutes.js";
 
 const app = express();
 const corsOptions = {
@@ -48,5 +49,6 @@ app.use("/api", PostRoutes);
 app.use("/", PostRoutes2);
 app.use("/api", CommentRoutes);
 app.use("/api", PasswordRoutes);
+app.use("/api", ArticleRoutes);
 
 export default app;
