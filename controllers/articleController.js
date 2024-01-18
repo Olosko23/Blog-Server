@@ -116,8 +116,34 @@ const deleteArticle = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Get six random articles from different categories
+// @route   GET /api/articles/random
+// @access  Public
+const getRandomArticles = asyncHandler(async (req, res) => {
+  try {
+    const categories = await Article.distinct("category");
+
+    // Shuffle the categories to get a random order
+    const shuffledCategories = categories.sort(() => Math.random() - 0.5);
+
+    // Retrieve one random article from each category
+    const randomArticles = await Promise.all(
+      shuffledCategories.slice(0, 6).map(async (category) => {
+        const article = await Article.findOne({ category }).limit(1);
+        return article;
+      })
+    );
+
+    res.json(randomArticles);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 export {
   createArticle,
+  getRandomArticles,
   createArticles,
   getAllArticles,
   getArticleById,
