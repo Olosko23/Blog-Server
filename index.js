@@ -13,7 +13,7 @@ import ArticleRoutes from "./routes/articleRoutes.js";
 
 const app = express();
 const corsOptions = {
-  origin: "https://phreddy.netlify.app",
+  origin: ["https://phreddy.netlify.app", "http://localhost:5173"],
   credentials: true,
 };
 

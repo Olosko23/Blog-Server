@@ -3,6 +3,7 @@ import {
   createArticle,
   createArticles,
   getAllArticles,
+  getRandomArticles,
   getArticleById,
   updateArticle,
   deleteArticle,
@@ -24,6 +25,11 @@ router.post("/articles/multi", createArticles);
 // @route   GET /api/articles
 // @access  Public
 router.get("/articles", getAllArticles);
+
+// @desc    Get 6 random articles
+// @route   GET /api/articles/random
+// @access  Public
+router.get("/articles/random", getRandomArticles);
 
 // @desc    Get a single article by ID
 // @route   GET /api/articles/:id
