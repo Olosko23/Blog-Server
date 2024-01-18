@@ -64,26 +64,26 @@ const getArticleById = asyncHandler(async (req, res) => {
 });
 
 // @desc    Update an article by ID
-// @route   PUT /api/articles/:id
+// @route   PATCH /api/articles/:id
 // @access  Public
 const updateArticle = asyncHandler(async (req, res) => {
   const { title, author, overview, thumbnail, category, content } = req.body;
 
-  const readTimeMinutes = calculateReadTime(content);
+  const updateFields = {};
+
+  if (title) updateFields.title = title;
+  if (author) updateFields.author = author;
+  if (overview) updateFields.overview = overview;
+  if (thumbnail) updateFields.thumbnail = thumbnail;
+  if (category) updateFields.category = category;
+  if (content) {
+    updateFields.content = content;
+    updateFields.readTime = calculateReadTime(content);
+  }
 
   const updatedArticle = await Article.findByIdAndUpdate(
     req.params.id,
-    {
-      $set: {
-        title,
-        author,
-        overview,
-        thumbnail,
-        category,
-        content,
-        readTime: readTimeMinutes,
-      },
-    },
+    { $set: updateFields },
     { new: true }
   );
 

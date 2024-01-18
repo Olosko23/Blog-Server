@@ -32,12 +32,17 @@ GET http://localhost:8080/api/articles
 ###
 ###
 
+GET https://phreddy-blog.onrender.com/api/articles
+
+###
+###
+
 GET http://localhost:8080/api/articles
 
 ###
 ###
 
-GET http://localhost:8080/api/articles/65a7ec1a881c613528a24406
+GET http://localhost:8080/api/articles/65a912fc5290020de701972c
 
 ###
 ###
@@ -47,29 +52,39 @@ DELETE http://localhost:8080/api/articles/65a7ea11cc1370246182f7c3
 ###
 ###
 
-PATCH http://localhost:8080/api/articles/65a7ea11cc1370246182f7c3
+PATCH http://localhost:8080/api/articles/65a912fc5290020de701972c
 Content-Type: application/json
 
 {
-    "title": "Edited Sample Article"
-}
-###
-###
-
-POST http://localhost:8080/api/articles
-Content-Type: application/json
-
-{
-  "title": "Exploring the Cosmos: Mysteries of the Universe",
-  "author": "Space Enthusiast",
-  "overview": "Embark on a cosmic journey as we unravel the mysteries of the universe, from black holes and dark matter to the wonders of distant galaxies. Join us in exploring the vastness of space and the scientific discoveries that continue to captivate our imaginations.",
   "thumbnail": {
-    "title": "Cosmos Image",
-    "imageUrl": "https://unsplash.com/photos/cosmos-image"
-  },
-  "category": "Science",
-  "content": "<div><h1>Exploring the Cosmos: Mysteries of the Universe</h1><p>Prepare for a journey beyond the stars as we delve into the mysteries of the universe. In this cosmic exploration, we'll venture into the unknown, discussing phenomena that have perplexed scientists and astronomers for centuries.</p><img src='https://example.com/cosmos_image.jpg' alt='Cosmos Image'><h2>The Enigma of Black Holes</h2><p>Black holes, mysterious cosmic entities with gravitational forces so intense that nothing can escape them, continue to intrigue scientists. Recent discoveries, such as gravitational waves, have opened new avenues for studying these enigmatic celestial bodies.</p></div><div><h2>Unveiling Dark Matter</h2><p>Dark matter, an invisible and elusive substance that makes up a significant portion of the universe, remains one of the greatest puzzles in astrophysics. Researchers are employing cutting-edge technologies to detect and understand the properties of dark matter, unlocking the secrets of the cosmos.</p></div><div><h2>The Wonders of Distant Galaxies</h2><p>Peering into the depths of space, astronomers have observed galaxies that defy our understanding of cosmic structures. From irregular galaxies to superclusters, each discovery adds to the tapestry of the universe, revealing its vastness and complexity.</p></div><div><h2>Interstellar Travel and Possibilities</h2><p>The dream of interstellar travel, once relegated to science fiction, is now a topic of serious scientific inquiry. Concepts like warp drives and solar sails are being explored as humanity contemplates the potential for exploring distant star systems and exoplanets.</p></div><div><h2>The Search for Extraterrestrial Life</h2><p>Are we alone in the universe? The search for extraterrestrial life continues, fueled by discoveries of exoplanets in the habitable zone and advancements in astrobiology. Scientists are exploring the conditions necessary for life and expanding our understanding of where life might exist beyond Earth.</p></div><div><h2>Cosmic Mysteries and Quantum Realms</h2><p>As we venture into the quantum realms of the universe, new mysteries unfold. Quantum entanglement, the nature of spacetime, and the fundamental building blocks of reality challenge our understanding, prompting a reexamination of the very fabric of the cosmos.</p></div><div><h2>Read Time: 6 Minutes</h2></div><div><h2>Conclusion</h2><p>Our journey through the cosmos has only scratched the surface of the mysteries that await exploration. With each discovery, humanity takes a step closer to unraveling the secrets of the universe, expanding our knowledge and igniting the curiosity that propels us toward the stars.</p></div>"
+    "title": "image",
+    "imageUrl": "https://phreddy.netlify.app/assets/pic2-dzhwWmxr.jpg"
+  }
 }
+###
+###
+
+POST https://phreddy-blog.onrender.com/api/articles
+Content-Type: application/json
+
+{
+  "title": "Innovations in Technology: Navigating the Digital Frontier",
+  "author": "Tech Explorer",
+  "overview": "Embark on a journey through the ever-evolving landscape of technology, where innovations reshape our daily lives and open new frontiers. Join us as we explore groundbreaking developments, emerging trends, and the transformative impact of technology on society.",
+  "thumbnail": {
+    "title": "Business Dynamics",
+    "imageUrl": "https://phreddy.netlify.app/assets/pic2-dzhwWmxr.jpg"
+  },
+  "category": "Technology",
+  "content": "<div><h1>Innovations in Technology: Navigating the Digital Frontier</h1><p>Immerse yourself in the dynamic world of technology, where rapid advancements drive progress and redefine the way we live, work, and connect. In this exploration, we'll delve into the latest innovations, emerging trends, and the profound impact of technology on our digital landscape.</p><img src='https://example.com/business_dynamics.jpg' alt='Business Dynamics'><h2>The Rise of Artificial Intelligence</h2><p>Artificial Intelligence (AI) continues to transform industries, from healthcare to finance. Explore the applications of AI, its role in automation, and the ethical considerations surrounding the integration of intelligent systems into our daily lives.</p></div><div><h2>5G Technology: Unleashing High-Speed Connectivity</h2><p>As 5G networks roll out globally, the promise of high-speed, low-latency connectivity is becoming a reality. Investigate the potential impact of 5G on industries, smart cities, and the Internet of Things (IoT), as well as the challenges and opportunities it presents.</p></div><div><h2>Blockchain: Beyond Cryptocurrencies</h2><p>Blockchain technology goes beyond cryptocurrencies, offering decentralized and secure solutions. Examine the diverse applications of blockchain, from supply chain management to digital identity verification, and its potential to disrupt traditional systems.</p></div><div><h2>Augmented Reality (AR) and Virtual Reality (VR)</h2><p>AR and VR technologies are changing the way we experience reality. Dive into the immersive worlds of augmented and virtual reality, exploring their applications in gaming, education, healthcare, and the potential for shaping the future of entertainment.</p></div><div><h2>Cybersecurity in the Digital Age</h2><p>With increasing digital interconnectedness comes the heightened importance of cybersecurity. Analyze the evolving landscape of cyber threats, innovations in cybersecurity measures, and the ongoing efforts to safeguard digital assets and privacy.</p></div><div><h2>Sustainable Tech: Eco-Friendly Innovations</h2><p>Technology plays a pivotal role in addressing environmental challenges. Explore sustainable tech innovations, from renewable energy solutions to eco-friendly manufacturing practices, and their impact on building a more sustainable future.</p></div><div><h2>Read Time: 9 Minutes</h2></div><div><h2>Conclusion</h2><p>As we navigate the digital frontier, the innovations in technology continue to shape our world in unprecedented ways. Stay curious, adapt to technological changes, and participate in the ongoing dialogue that defines the responsible and inclusive integration of technology into our lives.</p></div>"
+}
+
+
+
+
+
+
+
 
 
 
