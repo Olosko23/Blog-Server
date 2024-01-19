@@ -7,6 +7,7 @@ import {
   getArticleById,
   updateArticle,
   deleteArticle,
+  uploadThumbnail,
 } from "../controllers/articleController.js";
 
 const router = express.Router();
@@ -20,6 +21,11 @@ router.post("/articles", createArticle);
 // @route   POST /api/articles/multi
 // @access  Public
 router.post("/articles/multi", createArticles);
+
+// @desc    Create article thumbnail
+// @route   PATCH /api/articles/thumbnail/:id
+// @access  Private
+router.patch("/articles/thumbnail/:id", uploadThumbnail);
 
 // @desc    Get all articles
 // @route   GET /api/articles

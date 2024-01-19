@@ -141,6 +141,43 @@ const getRandomArticles = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Upload thumbail picture to an article
+// @route   PATCH /api/articles/thumbnail/:id
+// @access  Private
+const uploadThumbnail = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    const article = await articleId.findById(id);
+
+    if (!article) {
+      return res.status(404).json({ message: "Article not found" });
+    }
+
+    // Handle avatar upload
+    upload.single("thumbnail")(req, res, async (err) => {
+      if (err) {
+        return res.status(400).json({ message: "Error uploading file" });
+      }
+      if (req.file) {
+        const result = await cloudinary.uploader.upload(req.file.path);
+
+        article.thumbnail = {
+          title: req.file.originalname,
+          imageUrl: result.secure_url,
+        };
+
+        const updatedArticle = await article.save();
+        res.status(200).json(updatedArticle);
+      } else {
+        return res.status(400).json({ message: "No file uploaded" });
+      }
+    });
+  } catch (error) {
+    res.status(400).json(error);
+    console.error(error);
+  }
+});
+
 export {
   createArticle,
   getRandomArticles,
@@ -149,4 +186,5 @@ export {
   getArticleById,
   updateArticle,
   deleteArticle,
+  uploadThumbnail,
 };
