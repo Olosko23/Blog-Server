@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import bcrypt from "bcrypt";
 import cloudinary from "../config/cloudinary.js";
+import upload from "../middlewares/multer.js";
 import User from "../models/userModel.js";
 import { createToken } from "../middlewares/middleware.js";
 
@@ -118,4 +119,36 @@ const uploadAvatar = asyncHandler(async (req, res) => {
   }
 });
 
-export { signup, login, uploadAvatar };
+//get all user
+const getAllUsers = asyncHandler(async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+//get one user
+
+const getOneUser = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      res.status(400).json({ message: "User ID not provided" });
+    }
+
+    const user = await User.findById(id);
+
+    if (!user) {
+      res.status(400).json({ message: "User ID not provided" });
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+export { signup, login, uploadAvatar, getOneUser, getAllUsers };
