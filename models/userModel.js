@@ -22,11 +22,20 @@ const userSchema = new Schema({
     title: String,
     imageUrl: String,
   },
+  about: {
+    type: String,
+  },
   resetToken: {
     type: String,
   },
   resetTokenExpiration: {
     type: Date,
+  },
+  occupation: {
+    type: String,
+  },
+  location: {
+    type: String,
   },
   twitterUrl: {
     type: String,
