@@ -18,30 +18,34 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  avatar: {
+    title: String,
+    imageUrl: String,
+  },
   resetToken: {
     type: String,
   },
   resetTokenExpiration: {
     type: Date,
   },
-  twitterUrl:{
-    type: String
-    },
-  instagramUrl:{
-    type: String
-    },
-  facebookUrl:{
-    type: String
-    },
-  youtubeUrl:{
-    type: String
-    },
-  whatsappUrl:{
-    type: String
-    },
-  linkedinUrl:{
-    type: String
-    },
+  twitterUrl: {
+    type: String,
+  },
+  instagramUrl: {
+    type: String,
+  },
+  facebookUrl: {
+    type: String,
+  },
+  youtubeUrl: {
+    type: String,
+  },
+  whatsappUrl: {
+    type: String,
+  },
+  linkedinUrl: {
+    type: String,
+  },
   isVerified: {
     type: Boolean,
     default: false,

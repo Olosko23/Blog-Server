@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import bcrypt from "bcrypt";
+import cloudinary from "../config/cloudinary.js";
 import User from "../models/userModel.js";
 import { createToken } from "../middlewares/middleware.js";
 
@@ -34,12 +35,10 @@ const signup = asyncHandler(async (req, res) => {
     }
 
     if (!isStrongPassword(password)) {
-      return res
-        .status(400)
-        .json({
-          error:
-            "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%*?&)",
-        });
+      return res.status(400).json({
+        error:
+          "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%*?&)",
+      });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -84,4 +83,39 @@ const login = asyncHandler(async (req, res) => {
   }
 });
 
-export { signup, login };
+//Upload Avatar
+const uploadAvatar = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Handle avatar upload
+    upload.single("avatar")(req, res, async (err) => {
+      if (err) {
+        return res.status(400).json({ message: "Error uploading file" });
+      }
+      if (req.file) {
+        const result = await cloudinary.uploader.upload(req.file.path);
+
+        user.avatar = {
+          title: req.file.originalname,
+          imageUrl: result.secure_url,
+        };
+
+        const updatedUser = await user.save();
+        res.status(200).json(updatedUser);
+      } else {
+        return res.status(400).json({ message: "No file uploaded" });
+      }
+    });
+  } catch (error) {
+    res.status(400).json(error);
+    console.error(error);
+  }
+});
+
+export { signup, login, uploadAvatar };
