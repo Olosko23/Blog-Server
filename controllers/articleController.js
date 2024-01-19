@@ -1,6 +1,14 @@
 import asyncHandler from "express-async-handler";
 import Article from "../models/articleModel.js";
+import upload from "../middlewares/multer.js";
+import cloudinary from "cloudinary";
 import { calculateReadTime } from "../middlewares/readTime.js";
+
+cloudinary.v2.config({
+  cloud_name: "dhw8uj9ct",
+  api_key: "951637631872152",
+  api_secret: "bN7WULjwv0udfl9HeAO9K4mAyNw",
+});
 
 // @desc    Create a new article
 // @route   POST /api/articles
@@ -141,39 +149,45 @@ const getRandomArticles = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Upload thumbail picture to an article
+// @desc    Upload thumbnail picture to an article
 // @route   PATCH /api/articles/thumbnail/:id
 // @access  Private
 const uploadThumbnail = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    const article = await articleId.findById(id);
+    const article = await Article.findById(id);
 
     if (!article) {
       return res.status(404).json({ message: "Article not found" });
     }
 
-    // Handle avatar upload
+    // Handle thumbnail upload
     upload.single("thumbnail")(req, res, async (err) => {
-      if (err) {
-        return res.status(400).json({ message: "Error uploading file" });
-      }
-      if (req.file) {
-        const result = await cloudinary.uploader.upload(req.file.path);
+      try {
+        if (err) {
+          throw new Error("Error uploading file");
+        }
+        if (req.file) {
+          const result = await cloudinary.uploader.upload(req.file.buffer, {
+            resource_type: "auto",
+          });
 
-        article.thumbnail = {
-          title: req.file.originalname,
-          imageUrl: result.secure_url,
-        };
+          article.thumbnail = {
+            title: req.file.originalname,
+            imageUrl: result.secure_url,
+          };
 
-        const updatedArticle = await article.save();
-        res.status(200).json(updatedArticle);
-      } else {
-        return res.status(400).json({ message: "No file uploaded" });
+          const updatedArticle = await article.save();
+          res.status(200).json(updatedArticle);
+        } else {
+          throw new Error("No file uploaded");
+        }
+      } catch (error) {
+        res.status(400).json({ message: error.message });
       }
     });
   } catch (error) {
-    res.status(400).json(error);
+    res.status(400).json({ message: error.message });
     console.error(error);
   }
 });
