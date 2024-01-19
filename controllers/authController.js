@@ -151,4 +151,42 @@ const getOneUser = asyncHandler(async (req, res) => {
   }
 });
 
-export { signup, login, uploadAvatar, getOneUser, getAllUsers };
+// Function to create or update user profile
+const createProfile = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const {
+    twitterUrl,
+    about,
+    instagramUrl,
+    facebookUrl,
+    youtubeUrl,
+    linkedinUrl,
+    occupation,
+    location,
+  } = req.body;
+
+  try {
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.twitterUrl = twitterUrl || user.twitterUrl;
+    user.about = about || user.about;
+    user.instagramUrl = instagramUrl || user.instagramUrl;
+    user.facebookUrl = facebookUrl || user.facebookUrl;
+    user.youtubeUrl = youtubeUrl || user.youtubeUrl;
+    user.linkedinUrl = linkedinUrl || user.linkedinUrl;
+    user.occupation = occupation || user.occupation;
+    user.location = location || user.location;
+
+    const updatedUser = await user.save();
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+export { signup, login, uploadAvatar, getOneUser, getAllUsers, createProfile };
