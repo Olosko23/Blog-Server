@@ -9,8 +9,12 @@ const articleSchema = new Schema(
       required: true,
     },
     author: {
-      type: String,
-      required: true,
+      username: String,
+      email: String,
+      avatar: {
+        title: String,
+        imageUrl: String,
+      },
     },
     overview: {
       type: String,
