@@ -3,7 +3,18 @@ GET http://localhost:8080
 
 ###
 
+GET https://phreddy-blog.onrender.com/api/articles
 
+###
+
+###
+
+GET https://phreddy-blog.onrender.com/api/articles/65aa6f789484181fdb0b3b8d
+
+###
+###
+
+DELETE  https://phreddy-blog.onrender.com/api/articles/65aa6f789484181fdb0b3b8d
 
 ###
 POST http://localhost:8080/api/auth/login
@@ -45,27 +56,27 @@ GET http://localhost:8080/api/articles
 GET http://localhost:8080/api/articles/random
 
 ###
+65a912fc5290020de701972c
+65a9142f5290020de7019730
+65a914875290020de7019732
+65a914b85290020de7019734
+65a914e85290020de7019736
+65a9151e5290020de7019738
+65a915515290020de701973a
+65a916655290020de701973f
+65a9351e5c0a12195f9187d2
+65a9361f5c0a12195f918812
+65a938bf5c0a12195f91881a
+
 ###
 
-GET http://localhost:8080/api/articles/65a912fc5290020de701972c
-
-###
-
-https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80
-###
-
-DELETE http://localhost:8080/api/articles/65a7ea11cc1370246182f7c3
-
-###
-###
-
-PATCH http://localhost:8080/api/articles/65a914875290020de7019732
+PATCH http://localhost:8080/api/articles/65a912fc5290020de701972c
 Content-Type: application/json
 
 {
   "thumbnail": {
     "title": "image",
-    "imageUrl": "https://phreddy.netlify.app/assets/pic2-dzhwWmxr.jpg"
+    "imageUrl": "https://res.cloudinary.com/dhw8uj9ct/image/upload/v1701430821/latptrurau4em8usy6d1.jpg"
   }
 }
 ###
@@ -76,16 +87,18 @@ POST https://phreddy-blog.onrender.com/api/articles
 Content-Type: application/json
 
 {
-  "title": "Innovations in Technology: Navigating the Digital Frontier",
-  "author": "Tech Explorer",
-  "overview": "Embark on a journey through the ever-evolving landscape of technology, where innovations reshape our daily lives and open new frontiers. Join us as we explore groundbreaking developments, emerging trends, and the transformative impact of technology on society.",
+  "title": "Financial Frontier: Navigating the World of Finance and Cryptocurrency",
+  "author": "Crypto Enthusiast",
+  "overview": "Embark on a journey through the dynamic landscape of finance and cryptocurrency, where innovations reshape traditional banking, investment, and the global economy. Join us as we explore groundbreaking developments, emerging trends, and the transformative impact of cryptocurrency on the financial sector.",
   "thumbnail": {
-    "title": "Business Dynamics",
-    "imageUrl": "https://phreddy.netlify.app/assets/pic2-dzhwWmxr.jpg"
+    "title": "Crypto Dynamics",
+    "imageUrl": "https://res.cloudinary.com/dhw8uj9ct/image/upload/v1701430821/latptrurau4em8usy6d1.jpg"
   },
-  "category": "Technology",
-  "content": "<div><h1>Innovations in Technology: Navigating the Digital Frontier</h1><p>Immerse yourself in the dynamic world of technology, where rapid advancements drive progress and redefine the way we live, work, and connect. In this exploration, we'll delve into the latest innovations, emerging trends, and the profound impact of technology on our digital landscape.</p><img src='https://example.com/business_dynamics.jpg' alt='Business Dynamics'><h2>The Rise of Artificial Intelligence</h2><p>Artificial Intelligence (AI) continues to transform industries, from healthcare to finance. Explore the applications of AI, its role in automation, and the ethical considerations surrounding the integration of intelligent systems into our daily lives.</p></div><div><h2>5G Technology: Unleashing High-Speed Connectivity</h2><p>As 5G networks roll out globally, the promise of high-speed, low-latency connectivity is becoming a reality. Investigate the potential impact of 5G on industries, smart cities, and the Internet of Things (IoT), as well as the challenges and opportunities it presents.</p></div><div><h2>Blockchain: Beyond Cryptocurrencies</h2><p>Blockchain technology goes beyond cryptocurrencies, offering decentralized and secure solutions. Examine the diverse applications of blockchain, from supply chain management to digital identity verification, and its potential to disrupt traditional systems.</p></div><div><h2>Augmented Reality (AR) and Virtual Reality (VR)</h2><p>AR and VR technologies are changing the way we experience reality. Dive into the immersive worlds of augmented and virtual reality, exploring their applications in gaming, education, healthcare, and the potential for shaping the future of entertainment.</p></div><div><h2>Cybersecurity in the Digital Age</h2><p>With increasing digital interconnectedness comes the heightened importance of cybersecurity. Analyze the evolving landscape of cyber threats, innovations in cybersecurity measures, and the ongoing efforts to safeguard digital assets and privacy.</p></div><div><h2>Sustainable Tech: Eco-Friendly Innovations</h2><p>Technology plays a pivotal role in addressing environmental challenges. Explore sustainable tech innovations, from renewable energy solutions to eco-friendly manufacturing practices, and their impact on building a more sustainable future.</p></div><div><h2>Read Time: 9 Minutes</h2></div><div><h2>Conclusion</h2><p>As we navigate the digital frontier, the innovations in technology continue to shape our world in unprecedented ways. Stay curious, adapt to technological changes, and participate in the ongoing dialogue that defines the responsible and inclusive integration of technology into our lives.</p></div>"
+  "category": "Finance",
+  "content": "<div><h1>Financial Frontier: Navigating the World of Finance and Cryptocurrency</h1><p>Immerse yourself in the dynamic world of finance and cryptocurrency, where rapid advancements drive progress and redefine the way we conduct transactions, invest, and perceive value. In this exploration, we'll delve into the latest innovations, emerging trends, and the profound impact of cryptocurrency on our financial landscape.</p><img src='https://example.com/crypto_dynamics.jpg' alt='Crypto Dynamics'><h2>Decentralized Finance (DeFi): Redefining Banking</h2><p>Decentralized Finance is reshaping traditional banking systems, offering financial services without intermediaries. Explore the applications of DeFi, its role in lending, borrowing, and earning interest, as well as the challenges and opportunities it presents for the future of finance.</p></div><div><h2>Cryptocurrency Investments: Beyond Bitcoin</h2><p>Cryptocurrency investments extend beyond Bitcoin, with a plethora of altcoins and tokens entering the market. Investigate the diverse investment opportunities in the crypto space, from decentralized applications (DApps) to non-fungible tokens (NFTs), and their potential to revolutionize traditional investment portfolios.</p></div><div><h2>Blockchain in Finance: Security and Transparency</h2><p>Blockchain technology is the backbone of cryptocurrency, providing security and transparency in financial transactions. Examine the applications of blockchain in finance, from cross-border payments to smart contracts, and its potential to streamline processes and reduce fraud.</p></div><div><h2>Central Bank Digital Currencies (CBDCs)</h2><p>Central banks worldwide are exploring the issuance of digital currencies. Dive into the world of CBDCs, exploring their potential impact on monetary policy, financial inclusion, and the evolution of the traditional banking system.</p></div><div><h2>Crypto Regulation: Navigating Legal Frameworks</h2><p>With the growing popularity of cryptocurrency, regulatory frameworks are evolving. Analyze the global landscape of crypto regulations, the challenges faced by governments, and the ongoing efforts to create a balanced and secure environment for crypto users and investors.</p></div><div><h2>The Future of Money: Cryptocurrency in Everyday Transactions</h2><p>Cryptocurrency is gradually becoming part of everyday transactions. Explore the potential future scenarios where digital currencies play a significant role in retail, online payments, and the overall transformation of the way we exchange value.</p></div><div><h2>Conclusion</h2><p>As we navigate the financial frontier, the innovations in cryptocurrency continue to shape our economic landscape in unprecedented ways. Stay informed, embrace the opportunities presented by the crypto revolution, and contribute to the ongoing dialogue that defines the responsible and inclusive integration of cryptocurrency into the world of finance.</p></div>"
 }
+
+
 
 
 
