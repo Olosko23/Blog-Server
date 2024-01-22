@@ -27,6 +27,7 @@ router.post("/articles/multi", createArticles);
 // @access  Private
 router.patch("/articles/thumbnail/:id", uploadThumbnail);
 
+
 // @desc    Get all articles
 // @route   GET /api/articles
 // @access  Public
