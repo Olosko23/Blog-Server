@@ -8,6 +8,7 @@ import {
   updateArticle,
   deleteArticle,
   uploadThumbnail,
+  getUserArticlesByUserId,
 } from "../controllers/articleController.js";
 
 const router = express.Router();
@@ -27,7 +28,6 @@ router.post("/articles/multi", createArticles);
 // @access  Private
 router.patch("/articles/thumbnail/:id", uploadThumbnail);
 
-
 // @desc    Get all articles
 // @route   GET /api/articles
 // @access  Public
@@ -42,6 +42,11 @@ router.get("/articles/random", getRandomArticles);
 // @route   GET /api/articles/:id
 // @access  Public
 router.get("/articles/:id", getArticleById);
+
+// @desc    Get user  article by ID
+// @route   GET /api/user/articles/:user_id
+// @access  Public
+router.get("/user/articles/:user_id", getUserArticlesByUserId);
 
 // @desc    Update an article by ID
 // @route   PUT /api/articles/:id

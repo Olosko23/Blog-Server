@@ -80,6 +80,10 @@ const getArticleById = asyncHandler(async (req, res) => {
   const article = await Article.findById(req.params.id);
 
   if (article) {
+    article.reads = (article.reads || 0) + 1;
+
+    await article.save();
+
     res.json(article);
   } else {
     res.status(404).json({ message: "Article not found" });
@@ -199,9 +203,32 @@ const uploadThumbnail = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Get all articles for a specific user by user ID
+// @route   GET /api/user/articles/:user_id
+// @access  Public
+const getUserArticlesByUserId = asyncHandler(async (req, res) => {
+  const { user_id } = req.params;
+
+  try {
+    const user = await User.findById(user_id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const userArticles = await Article.find({ author_id: user_id });
+
+    res.json(userArticles);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 export {
   createArticle,
   getRandomArticles,
+  getUserArticlesByUserId,
   createArticles,
   getAllArticles,
   getArticleById,
