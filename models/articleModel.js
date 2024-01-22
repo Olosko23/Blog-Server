@@ -28,6 +28,10 @@ const articleSchema = new Schema(
       type: String,
       required: true,
     },
+    reads: {
+      type: Number,
+      default: 0,
+    },
     thumbnail: {
       title: String,
       imageUrl: String,

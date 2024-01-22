@@ -9,12 +9,12 @@ GET https://phreddy-blog.onrender.com/api/articles
 
 ###
 
-GET https://phreddy-blog.onrender.com/api/articles/65aa6f789484181fdb0b3b8d
+GET https://phreddy-blog.onrender.com/api/articles/65ae291db8ced6239877cf56
 
 ###
 ###
 
-DELETE  https://phreddy-blog.onrender.com/api/articles/65aa6f789484181fdb0b3b8d
+DELETE  https://phreddy-blog.onrender.com/api/articles/65ae291db8ced6239877cf56
 
 ###
 POST http://localhost:8080/api/auth/login
