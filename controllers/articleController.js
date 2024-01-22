@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import Article from "../models/articleModel.js";
+import User from "../models/userModel.js";
 import cloudinary from "cloudinary";
 import upload from "../middlewares/multer.js";
 import { calculateReadTime } from "../middlewares/readTime.js";
@@ -14,13 +15,13 @@ cloudinary.v2.config({
 // @route   POST /api/articles
 // @access  Public
 const createArticle = asyncHandler(async (req, res) => {
-  const { title, author, overview, thumbnail, category, content } = req.body;
+  const { title, author_id, overview, thumbnail, category, content } = req.body;
 
   const readTimeMinutes = calculateReadTime(content);
 
   const newArticle = new Article({
     title,
-    author,
+    author_id,
     overview,
     thumbnail,
     category,
@@ -29,6 +30,20 @@ const createArticle = asyncHandler(async (req, res) => {
   });
 
   const createdArticle = await newArticle.save();
+
+  const authorDetails = await User.findById(author_id, {
+    username: 1,
+    email: 1,
+    avatar: 1,
+    about: 1,
+    location: 1,
+    twitterUrl: 1,
+    linkedinUrl: 1,
+  });
+
+  createdArticle.author_details = authorDetails;
+
+  await createdArticle.save();
 
   res.status(201).json(createdArticle);
 });
