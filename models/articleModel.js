@@ -8,13 +8,21 @@ const articleSchema = new Schema(
       type: String,
       required: true,
     },
-    author: {
+    author_id: {
+      type: String,
+      required: true,
+    },
+    author_details: {
       username: String,
       email: String,
       avatar: {
         title: String,
         imageUrl: String,
       },
+      about: String,
+      location: String,
+      twitterUrl: String,
+      linkedinUrl: String,
     },
     overview: {
       type: String,
