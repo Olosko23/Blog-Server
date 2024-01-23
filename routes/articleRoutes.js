@@ -10,6 +10,7 @@ import {
   uploadThumbnail,
   getUserArticlesByUserId,
 } from "../controllers/articleController.js";
+import { protect } from "../middlewares/middleware.js";
 
 const router = express.Router();
 
@@ -51,11 +52,11 @@ router.get("/user/articles/:user_id", getUserArticlesByUserId);
 // @desc    Update an article by ID
 // @route   PUT /api/articles/:id
 // @access  Public
-router.patch("/articles/:id", updateArticle);
+router.patch("/articles/:id",protect, updateArticle);
 
 // @desc    Delete an article by ID
 // @route   DELETE /api/articles/:id
 // @access  Public
-router.delete("/articles/:id", deleteArticle);
+router.delete("/articles/:id",protect, deleteArticle);
 
 export default router;
