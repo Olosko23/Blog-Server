@@ -254,6 +254,7 @@ const addComment = asyncHandler(async (req, res) => {
       .status(200)
       .json({ message: "Comment added successfully", comment: newComment });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
