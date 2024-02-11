@@ -12,13 +12,11 @@ const commentSchema = new Schema(
       type: String,
       required: true,
     },
-    author_details: {
-      username: String,
-      email: String,
-      avatar: {
-        title: String,
-        imageUrl: String,
-      },
+    author_Image: {
+      type: String,
+    },
+    author_username: {
+      type: String,
     },
     replies: [
       {
