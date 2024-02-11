@@ -64,7 +64,7 @@ router.delete("/articles/:id", protect, deleteArticle);
 // @desc    Add a comment to an article
 // @route   POST /api/articles/:id/comment
 // @access  Private
-router.post("/articles/:id/comment", protect, addComment);
+router.post("/articles/:id/comment", addComment);
 
 // @desc    Add a reply to a comment
 // @route   POST /api/articles/:articleId/comments/:commentId/reply

@@ -230,7 +230,7 @@ const getUserArticlesByUserId = asyncHandler(async (req, res) => {
 // @access  Public
 const addComment = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const { content, author_id, author_details } = req.body;
+  const { content, author_id, author_Image, author_username } = req.body;
 
   try {
     const article = await Article.findById(id);
@@ -242,7 +242,8 @@ const addComment = asyncHandler(async (req, res) => {
     const newComment = {
       content,
       author_id,
-      author_details,
+      author_Image,
+      author_username,
     };
 
     article.comments.push(newComment);
@@ -262,7 +263,7 @@ const addComment = asyncHandler(async (req, res) => {
 // @access  Public
 const addReplyToComment = asyncHandler(async (req, res) => {
   const { articleId, commentId } = req.params;
-  const { content, author_id, author_details } = req.body;
+  const { content, author_id, author_Image, author_username } = req.body;
 
   try {
     const article = await Article.findById(articleId);
@@ -280,7 +281,8 @@ const addReplyToComment = asyncHandler(async (req, res) => {
     const newReply = {
       content,
       author_id,
-      author_details,
+      author_Image,
+      author_username,
     };
 
     comment.replies.push(newReply);
