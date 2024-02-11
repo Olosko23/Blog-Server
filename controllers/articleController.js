@@ -225,6 +225,76 @@ const getUserArticlesByUserId = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Add a comment to an article
+// @route   POST /api/articles/:id/comment
+// @access  Public
+const addComment = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { content, author_id, author_details } = req.body;
+
+  try {
+    const article = await Article.findById(id);
+
+    if (!article) {
+      return res.status(404).json({ message: "Article not found" });
+    }
+
+    const newComment = {
+      content,
+      author_id,
+      author_details,
+    };
+
+    article.comments.push(newComment);
+
+    await article.save();
+
+    res
+      .status(200)
+      .json({ message: "Comment added successfully", comment: newComment });
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+// @desc    Add a reply to a comment
+// @route   POST /api/articles/:articleId/comments/:commentId/reply
+// @access  Public
+const addReplyToComment = asyncHandler(async (req, res) => {
+  const { articleId, commentId } = req.params;
+  const { content, author_id, author_details } = req.body;
+
+  try {
+    const article = await Article.findById(articleId);
+
+    if (!article) {
+      return res.status(404).json({ message: "Article not found" });
+    }
+
+    const comment = article.comments.id(commentId);
+
+    if (!comment) {
+      return res.status(404).json({ message: "Comment not found" });
+    }
+
+    const newReply = {
+      content,
+      author_id,
+      author_details,
+    };
+
+    comment.replies.push(newReply);
+
+    await article.save();
+
+    res
+      .status(200)
+      .json({ message: "Reply added successfully", reply: newReply });
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 export {
   createArticle,
   getRandomArticles,
@@ -235,4 +305,6 @@ export {
   updateArticle,
   deleteArticle,
   uploadThumbnail,
+  addComment,
+  addReplyToComment,
 };
