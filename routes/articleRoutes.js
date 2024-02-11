@@ -9,6 +9,8 @@ import {
   deleteArticle,
   uploadThumbnail,
   getUserArticlesByUserId,
+  addComment,
+  addReplyToComment,
 } from "../controllers/articleController.js";
 import { protect } from "../middlewares/middleware.js";
 
@@ -52,11 +54,25 @@ router.get("/user/articles/:user_id", getUserArticlesByUserId);
 // @desc    Update an article by ID
 // @route   PUT /api/articles/:id
 // @access  Public
-router.patch("/articles/:id",protect, updateArticle);
+router.patch("/articles/:id", protect, updateArticle);
 
 // @desc    Delete an article by ID
 // @route   DELETE /api/articles/:id
 // @access  Public
-router.delete("/articles/:id",protect, deleteArticle);
+router.delete("/articles/:id", protect, deleteArticle);
+
+// @desc    Add a comment to an article
+// @route   POST /api/articles/:id/comment
+// @access  Private
+router.post("/articles/:id/comment", protect, addComment);
+
+// @desc    Add a reply to a comment
+// @route   POST /api/articles/:articleId/comments/:commentId/reply
+// @access  Private
+router.post(
+  "/articles/:articleId/comments/:commentId/reply",
+  protect,
+  addReplyToComment
+);
 
 export default router;

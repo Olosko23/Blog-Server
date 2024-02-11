@@ -2,6 +2,36 @@ import mongoose from "mongoose";
 
 const { Schema, model } = mongoose;
 
+const commentSchema = new Schema(
+  {
+    content: {
+      type: String,
+      required: true,
+    },
+    author_id: {
+      type: String,
+      required: true,
+    },
+    author_details: {
+      username: String,
+      email: String,
+      avatar: {
+        title: String,
+        imageUrl: String,
+      },
+    },
+    replies: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
+  },
+  {
+    timestamps: true,
+  }
+);
+
 const articleSchema = new Schema(
   {
     title: {
@@ -47,19 +77,25 @@ const articleSchema = new Schema(
     readTime: {
       type: Number,
     },
-    comments: [
-      {
-        type: String,
-      },
-    ],
-    likes: {
-      type: Number,
+    comments: [commentSchema],
+    link: {
+      type: String,
     },
   },
   {
     timestamps: true,
   }
 );
+
+articleSchema.pre("save", function (next) {
+  if (this.isModified("title")) {
+    this.link = this.title
+      .toLowerCase()
+      .replace(/[^a-zA-Z0-9 ]/g, "")
+      .replace(/\s+/g, "-");
+  }
+  next();
+});
 
 const Article = model("Article", articleSchema);
 
