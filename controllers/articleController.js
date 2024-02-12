@@ -244,15 +244,19 @@ const addComment = asyncHandler(async (req, res) => {
       author_id,
       author_Image,
       author_username,
+      createdAt: new Date(),
     };
 
     article.comments.push(newComment);
 
     await article.save();
 
-    res
-      .status(200)
-      .json({ message: "Comment added successfully", comment: newComment });
+    res.status(200).json({
+      message: "Comment added successfully",
+      article: await Article.findById(id)
+        .populate("comments.author_id", "username avatar imageUrl")
+        .exec(),
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal Server Error" });
