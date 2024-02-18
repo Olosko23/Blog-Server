@@ -24,7 +24,7 @@
 
 ### Overview
 
-Welcome to our project, a dynamic and feature-rich blog web application built with the aim of providing users with a seamless platform to create, share, and explore engaging content. The project leverages the power of Express.js, MongoDB, and Node.js to deliver a robust and scalable backend architecture.
+Welcome to our project, a dynamic and feature-rich blog web application built with the aim of providing users with a seamless platform to create, share, and explore engaging content. The project leverages the power of Express.js, MongoDB, and Node.js to deliver a robust and scalable backend architecture
 
 ### Project Objectives
 
