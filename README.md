@@ -457,6 +457,7 @@ API_KEY=951637631872152
 <br />
 API_SECRET=bN7WULjwv0udfl9HeAO9K4mAyNw
 <br />
+<hr />
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
