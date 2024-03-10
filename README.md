@@ -24,7 +24,7 @@
 
 ### Overview
 
-Welcome to our project, a dynamic and feature-rich blog web application built with the aim of providing users with a seamless platform to create, share, and explore engaging content. The project leverages the power of Express.js, MongoDB, and Node.js to deliver a robust and scalable backend architecture
+Welcome to our project, a dynamic and feature-rich blog web application built with the aim of providing users with a seamless platform to create, share, and explore engaging content. The project leverages the power of Express.js, MongoDB, and Node.js to deliver a robust and scalable backend architecture.
 
 ### Project Objectives
 
@@ -458,6 +458,7 @@ API_KEY=951637631872152
 API_SECRET=bN7WULjwv0udfl9HeAO9K4mAyNw
 <br />
 <hr />
+
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
