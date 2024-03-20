@@ -210,6 +210,43 @@ const verifyUser = asyncHandler(async (req, res) => {
   }
 });
 
+// Function to follow another user
+const followUser = asyncHandler(async (req, res) => {
+  const { userId, followUserId } = req.params;
+
+  try {
+    if (!userId || !followUserId) {
+      return res.status(400).json({ message: "Both user IDs are required" });
+    }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const userToFollow = await User.findById(followUserId);
+    if (!userToFollow) {
+      return res.status(404).json({ message: "User to follow not found" });
+    }
+
+    if (user.following.includes(followUserId)) {
+      return res
+        .status(400)
+        .json({ message: "User is already following this user" });
+    }
+
+    user.following.push(followUserId);
+    await user.save();
+
+    userToFollow.followers.push(userId);
+    await userToFollow.save();
+
+    res.status(200).json({ message: "User followed successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 export {
   signup,
   login,
@@ -218,4 +255,5 @@ export {
   getAllUsers,
   createProfile,
   verifyUser,
+  followUser,
 };
