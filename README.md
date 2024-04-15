@@ -44,7 +44,7 @@ Welcome to our project, a dynamic and feature-rich blog web application built wi
 
 2. **MongoDB:** A NoSQL database that offers flexibility in data storage, particularly well-suited for managing blog posts and user-related information.
 
-3. **Node.js:** An open-source, cross-platform JavaScript runtime environment that enables server-side scripting, facilitating the execution of server-side logic.
+3. **Node.js:** An open-source, cross-platform JavaScript runtime environment that enables server-side scripting, facilitating the execution of server-side logic
 
 ### Getting Started
 
