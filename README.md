@@ -1,4 +1,4 @@
-# Blog App Backend
+# Blog App Backend.
 
 [![Your Project Badge](https://img.shields.io/badge/Blog-Your_Project_Status-brightgreen)](https://your_project_url)
 
